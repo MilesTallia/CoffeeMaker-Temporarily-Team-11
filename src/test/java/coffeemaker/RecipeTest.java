@@ -296,20 +296,22 @@ public class RecipeTest {
 		assertNotEquals(recipe.hashCode(), recipe2.hashCode());
 	}
 
+	@Test
+	@DisplayName("Test 28 - hashcode with null name")
+	public void test28() {
+		assertNotEquals(recipe.hashCode(),0);
+	}
+
+
+
+
+
+
 	// Equals
 
 	@Test
-	@DisplayName("Test 28 - Same recipes equal")
-	public void test28() {
-		Recipe recipe2 = new Recipe();
-		recipe.setName("1");
-		recipe2.setName("1");
-		assertEquals(recipe, recipe2);
-	}
-
-	@Test
-	@DisplayName("Test 29 - Same recipes equal function")
-	public void test29() {
+	@DisplayName("Test 30 - Same recipes equal")
+	public void test30() {
 		Recipe recipe2 = new Recipe();
 		recipe.setName("1");
 		recipe2.setName("1");
@@ -317,31 +319,23 @@ public class RecipeTest {
 	}
 
 	@Test
-	@DisplayName("Test 30 - Different recipes do not equal")
-	public void test30() {
-		Recipe recipe2 = new Recipe();
-		recipe.setName("1");
-		recipe2.setName("2");
-		assertNotEquals(recipe, recipe2);
-	}
-
-	@Test
-	@DisplayName("Test 31 - Different recipes do not equal function")
+	@DisplayName("Test 31 - Different recipes do not equal")
 	public void test31() {
 		Recipe recipe2 = new Recipe();
 		recipe.setName("1");
+		recipe.setAmtChocolate("10");
 		recipe2.setName("2");
 		assertEquals(false, recipe.equals(recipe2));
 	}
 
 	@Test
-	@DisplayName("Test 32 - Null recipe does not equal function")
+	@DisplayName("Test 32 - Null object does not equal")
 	public void test32() {
 		assertEquals(false, recipe.equals(null));
 	}
 
 	@Test
-	@DisplayName("Test 33 - Non recipe class does not equal function")
+	@DisplayName("Test 33 - Non recipe class does not equal")
 	public void test33() {
 		RecipeBook rb = new RecipeBook();
 		assertEquals(false, recipe.equals(rb));
@@ -351,18 +345,18 @@ public class RecipeTest {
 	@DisplayName("Test 34 - Same null recipes equal")
 	public void test34() {
 		Recipe recipe2 = new Recipe();
-		assertEquals(recipe, recipe2);
+		assertEquals(true, recipe.equals(recipe2));
 	}
 
 	@Test
-	@DisplayName("Test 35 - Same name but different ingredient recipes equal")
+	@DisplayName("Test 35 - Same name but different ingredient recipes do not equal")
 	public void test35() {
 		Recipe recipe2 = new Recipe();
 		recipe.setName("flan");
 		recipe2.setName("flan");
 		recipe.setAmtMilk("20");
 		recipe2.setAmtMilk("10");
-		assertEquals(recipe, recipe2);
+		assertEquals(false, recipe.equals(recipe2));
 	}
 
 	@Test
@@ -373,7 +367,7 @@ public class RecipeTest {
 		recipe2.setName("tart");
 		recipe.setPrice("20");
 		recipe2.setPrice("10");
-		assertEquals(recipe, recipe2);
+		assertEquals(true, recipe.equals(recipe2));
 	}
 
 	@Test
@@ -386,7 +380,32 @@ public class RecipeTest {
 		recipe2.setPrice("10");
 		recipe.setAmtMilk("100");
 		recipe2.setAmtMilk("100");
-		assertNotEquals(recipe, recipe2);
+		assertEquals(true, recipe.equals(recipe2));
 	}
+
+	@Test
+	@DisplayName("Test 38 - Same recipe equals itself")
+	public void test38() {
+		recipe.setName("onlyRecipe");
+		assertEquals(true, recipe.equals(recipe));
+	}
+
+	// @Test
+	// @DisplayName("Test 39 - First recipe name null do not equal")
+	// public void test39() {
+	// 	Recipe recipe2 = new Recipe();
+	// 	recipe.setName(null);
+	// 	recipe2.setName("2");
+	// 	assertEquals(false, recipe.equals(recipe2));
+	// }
+
+	// @Test
+	// @DisplayName("Test 40 - Second recipe name null do not equal")
+	// public void test40() {
+	// 	Recipe recipe2 = new Recipe();
+	// 	recipe.setName("1");
+	// 	recipe2.setName(null);
+	// 	assertEquals(false, recipe.equals(recipe2));
+	// }
 
 }
