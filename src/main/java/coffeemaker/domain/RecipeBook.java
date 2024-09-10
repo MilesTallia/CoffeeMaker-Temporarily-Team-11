@@ -89,9 +89,9 @@ public class RecipeBook {
    * @return the name of the old recipe or {@code null} if the delete operation failed
    */
   public String deleteRecipe(int recipeToDelete) {
-    if (recipeArray[recipeToDelete] != null) {
+    if (recipeArray[recipeToDelete] != null) { // this is a potential defect - no defensive check for an index out of bounds
       String recipeName = recipeArray[recipeToDelete].getName();
-      recipeArray[recipeToDelete] = new Recipe();
+      recipeArray[recipeToDelete] = new Recipe(); // this is a potential defect - deleting at a recipe at the same slot twice returns the recipe's name, then a blank string instead of null
       return recipeName;
     } else {
       return null;
@@ -111,7 +111,7 @@ public class RecipeBook {
   public String replaceRecipe(int recipeToReplace, Recipe newRecipe) {
     if (recipeArray[recipeToReplace] != null) {
       String recipeName = recipeArray[recipeToReplace].getName();
-      newRecipe.setName("");
+      newRecipe.setName(""); // this is a potential defect - why change the name of the recipe when replacing?
       recipeArray[recipeToReplace] = newRecipe;
       return recipeName;
     } else {
