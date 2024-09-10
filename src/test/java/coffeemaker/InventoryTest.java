@@ -265,6 +265,119 @@ public class InventoryTest {
         
     }
 
-   
+        //Testing enoughIngredients method
+
+    @Test
+    @DisplayName ("Test 27: Testing if there is enough Ingredients")
+    public void test27(){
+        assertEquals(inventory.enoughIngredients(recipe),true);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 28: Testing adding ingredients for enough ingredients")
+    public void test28(){
+        recipe.setAmtChocolate("15");
+        recipe.setAmtMilk("15");
+        recipe.setAmtCoffee("15");
+        recipe.setAmtSugar("15");
+        assertEquals(inventory.enoughIngredients(recipe),true);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 29: Test using ingredients")
+    public void test29(){
+        recipe.setAmtChocolate("15");
+        recipe.setAmtMilk("15");
+        recipe.setAmtCoffee("15");
+        recipe.setAmtSugar("15");
+        assertEquals(inventory.useIngredients(recipe),true);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 30: Not enough coffee in inventory for recipe")
+    public void test30(){
+        recipe.setAmtChocolate("15");
+        recipe.setAmtMilk("15");
+        recipe.setAmtCoffee("16");
+        recipe.setAmtSugar("15");
+
+      assertEquals(inventory.enoughIngredients(recipe),false);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 31: Not enough milk in inventory for recipe")
+    public void test31(){
+        recipe.setAmtChocolate("15");
+        recipe.setAmtMilk("16");
+        recipe.setAmtCoffee("15");
+        recipe.setAmtSugar("15");
+
+      assertEquals(inventory.enoughIngredients(recipe),false);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 32: Not enough chocolate in inventory for recipe")
+    public void test32(){
+        recipe.setAmtChocolate("16");
+        recipe.setAmtMilk("15");
+        recipe.setAmtCoffee("15");
+        recipe.setAmtSugar("15");
+
+      assertEquals(inventory.enoughIngredients(recipe),false);
+        
+    }
+    
+    @Test
+    @DisplayName ("Test 33: Not enough sugar in inventory for recipe")
+    public void test33(){
+        recipe.setAmtChocolate("15");
+        recipe.setAmtMilk("15");
+        recipe.setAmtCoffee("15");
+        recipe.setAmtSugar("16");
+
+      assertEquals(inventory.enoughIngredients(recipe),false);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 34: Not enough of multiple ingredients in inventory for recipe")
+    public void test34(){
+        recipe.setAmtChocolate("15");
+        recipe.setAmtMilk("16");
+        recipe.setAmtCoffee("16");
+        recipe.setAmtSugar("16");
+
+      assertEquals(inventory.enoughIngredients(recipe),false);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 35: If you cannot make the recipe using useIngredients method")
+    public void test35(){
+        recipe.setAmtChocolate("16");
+        recipe.setAmtMilk("16");
+        recipe.setAmtCoffee("16");
+        recipe.setAmtSugar("16");
+
+      assertEquals(inventory.useIngredients(recipe),false);
+        
+    }
+
+    @Test
+    @DisplayName ("Test 36: If you cannot make the recipe using useIngredients method (missing 2 ingredients)")
+    public void test36(){
+        recipe.setAmtChocolate("16");
+        recipe.setAmtMilk("15");
+        recipe.setAmtCoffee("15");
+        recipe.setAmtSugar("16");
+
+      assertEquals(inventory.useIngredients(recipe),false);
+        
+    }
 
 }

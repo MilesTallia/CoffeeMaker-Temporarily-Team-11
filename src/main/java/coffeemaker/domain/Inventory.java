@@ -190,7 +190,7 @@ public class Inventory {
    *
    * @return boolean
    */
-  protected boolean enoughIngredients(Recipe r) { // defect
+  public boolean enoughIngredients(Recipe r) { // defect protected instead of public
     boolean isEnough = true;
     if (this.coffee < r.getAmtCoffee()) {
       isEnough = false;
