@@ -198,14 +198,21 @@ public class Recipe {
       return false;
     }
     final Recipe other = (Recipe) obj;
-    if (name == null) {
+    if (this.name == null) {
       if (other.name != null) {
         return false;
       }
-    } else if (!name.equals(other.name)) {
-      return false;
     }
-    return true;
+    if (amtChocolate == other.getAmtChocolate()) {
+      if (amtCoffee == other.getAmtCoffee()) {
+        if (amtMilk == other.getAmtMilk()) {
+          if (amtSugar == other.getAmtSugar()) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
 }
