@@ -1,4 +1,4 @@
-package coffeemaker;
+package coffeemaker.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 
 import coffeemaker.exceptions.RecipeException;
-import coffeemaker.domain.*;
 
 /**
  * Sample component test suite.
