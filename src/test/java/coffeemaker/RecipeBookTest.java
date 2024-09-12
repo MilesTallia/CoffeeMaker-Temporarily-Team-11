@@ -50,7 +50,7 @@ public class RecipeBookTest {
         recipeBook.addRecipe(initialRecipe);
 
         Recipe addedRecipe = new Recipe(); // added to the partially filled array
-        addedRecipe.setName("Test recipe"); // we need to make this recipe different from the existing recipe or it won't be added
+        addedRecipe.setAmtChocolate("10"); // we need to modify the recipe's ingredients in some way so we aren't adding an already existing recipe
         boolean addResult = recipeBook.addRecipe(addedRecipe); 
         assertTrue(addResult);
         
@@ -182,7 +182,7 @@ public class RecipeBookTest {
 
         Recipe[] resultingRecipes = recipeBook.getRecipes();
         String resultingRecipeName = resultingRecipes[0].getName(); // getting the name at the location of the replaced recipe
-        assertEquals(replacementResult, resultingRecipeName); // the recipe at the replaced position should not have had its name modified
+        assertEquals(replacingName, resultingRecipeName); // the recipe at the replaced position should not have had its name modified
         // note that we can't test this by checking object equality because the replacing recipe was passed by reference
     }
 

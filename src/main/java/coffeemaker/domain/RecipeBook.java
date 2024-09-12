@@ -89,9 +89,12 @@ public class RecipeBook {
    * @return the name of the old recipe or {@code null} if the delete operation failed
    */
   public String deleteRecipe(int recipeToDelete) {
-    if (recipeArray[recipeToDelete] != null) { // this is a potential defect - no defensive check for an index out of bounds
-      String recipeName = recipeArray[recipeToDelete].getName();
-      recipeArray[recipeToDelete] = new Recipe(); // this is a potential defect - deleting at a recipe at the same slot twice returns the recipe's name, then a blank string instead of null
+    if (recipeToDelete >= recipeArray.length || recipeToDelete < 0) { // targeted index is out of the bounds of the array
+      return null;
+    }
+    if (recipeArray[recipeToDelete] != null) { 
+      String recipeName = recipeArray[recipeToDelete].getName(); 
+      recipeArray[recipeToDelete] = null; // removing the Recipe from the book
       return recipeName;
     } else {
       return null;
@@ -109,9 +112,12 @@ public class RecipeBook {
    * @return the name of the old recipe or {@code null} if the replace operation failed
    */
   public String replaceRecipe(int recipeToReplace, Recipe newRecipe) {
-    if (recipeArray[recipeToReplace] != null) {
+    if (recipeToReplace >= recipeArray.length || recipeToReplace < 0) { // targeted index is out of the bounds of the array
+      return null;
+    }
+    if (recipeArray[recipeToReplace] != null) { 
       String recipeName = recipeArray[recipeToReplace].getName();
-      newRecipe.setName(""); // this is a potential defect - why change the name of the recipe when replacing?
+      // originally changeed the name of the newRecipe to a blank String, this code was removed because it created an unintended side effect
       recipeArray[recipeToReplace] = newRecipe;
       return recipeName;
     } else {
