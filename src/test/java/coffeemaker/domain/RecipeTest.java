@@ -395,7 +395,9 @@ public class RecipeTest {
 	// 	Recipe recipe2 = new Recipe();
 	// 	recipe.setName(null);
 	// 	recipe2.setName("2");
-	// 	assertEquals(false, recipe.equals(recipe2));
+	// 	assertNull(recipe.getName());
+	// 	assertEquals("2", recipe2.getName());
+	// 	assertFalse(recipe.equals(recipe2));
 	// }
 
 	// @Test

@@ -198,11 +198,6 @@ public class Recipe {
       return false;
     }
     final Recipe other = (Recipe) obj;
-    if (this.name == null) {
-      if (other.name != null) {
-        return false;
-      }
-    }
     if (amtChocolate == other.getAmtChocolate()) {
       if (amtCoffee == other.getAmtCoffee()) {
         if (amtMilk == other.getAmtMilk()) {
