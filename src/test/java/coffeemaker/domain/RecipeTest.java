@@ -1,4 +1,4 @@
-package coffeemaker;
+package coffeemaker.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 
 import coffeemaker.exceptions.RecipeException;
-import coffeemaker.domain.*;
 
 /**
  * Sample component test suite.
@@ -390,22 +389,14 @@ public class RecipeTest {
 		assertEquals(true, recipe.equals(recipe));
 	}
 
-	// @Test
-	// @DisplayName("Test 39 - First recipe name null do not equal")
-	// public void test39() {
-	// 	Recipe recipe2 = new Recipe();
-	// 	recipe.setName(null);
-	// 	recipe2.setName("2");
-	// 	assertEquals(false, recipe.equals(recipe2));
-	// }
+	@Test
+	@DisplayName("Test 39 - Recipe name is null do not equal")
+	public void test39() {
+		Recipe recipe2 = new Recipe();
+		recipe.setName(null);
+		recipe2.setName("tart");
+		assertEquals(recipe,recipe2);
+	}
 
-	// @Test
-	// @DisplayName("Test 40 - Second recipe name null do not equal")
-	// public void test40() {
-	// 	Recipe recipe2 = new Recipe();
-	// 	recipe.setName("1");
-	// 	recipe2.setName(null);
-	// 	assertEquals(false, recipe.equals(recipe2));
-	// }
 
 }
